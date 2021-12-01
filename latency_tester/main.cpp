@@ -120,24 +120,36 @@ int main(int argc, char** argv)
 {
     signal(SIGINT, signalHandler);
 
-    if(argc > 1) program_under_test = argv[1];
-    else         program_under_test = "undefined";
-
-    initXShm();
-
     int input_fd = -1;
     struct input_event inputEvent;
     int err = -1;
-    // TODO make this one dynamic
-    char* event_handle = "/dev/input/event21";
+    char* event_handle;
+
+    if(argc < 3)
+    {
+        cerr << "Too few arguments!" << endl
+             << "Usage: latency_tester INPUT_DEVICE PROGRAM_NAME" << endl
+             << "INPUT_DEVICE: path to /dev/input/eventXY" << endl
+             << "PROGRAM_NAME: name of program under test to appear in log files" << endl;
+        exit(SIGABRT);
+    }
+    else
+    {
+        event_handle = argv[1];
+        program_under_test = argv[2];
+    }
+
     input_fd = open(event_handle, O_RDONLY | O_NONBLOCK);
 
-    int x = 200;
-    int y = 200;
-    unsigned int color;
-    unsigned int lastColor;
+    if(input_fd == -1)
+    {
+        cerr << "Could not open input device " << event_handle << endl;
+        exit(SIGABRT);
+    }
 
     int iteration = 0;
+
+    initXShm();
 
     while(true)
     {
