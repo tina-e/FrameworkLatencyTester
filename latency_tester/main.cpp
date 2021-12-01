@@ -5,8 +5,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <signal.h>
-//#include <cstdlib>
-//#include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
