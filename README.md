@@ -5,6 +5,7 @@
 This Repository contains:
 
  * a program to measure the latency of graphics frameworks (`latency_tester`)
+ * a program that automatically triggers input events (`click_simulator`)
  * several test programs implemented with different frameworks (`test_programs`)
  * measurement data (`data`)
 
