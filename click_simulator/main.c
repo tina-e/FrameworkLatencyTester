@@ -3,6 +3,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <linux/uinput.h>
+#include <signal.h>
+
+int fd_uinput;
 
 // create virtual input device with uinput
 int init_uinput()
@@ -42,8 +45,22 @@ void emit(int fd, int type, int code, int val)
    write(fd, &ie, sizeof(ie));
 }
 
+void cleanup()
+{
+    ioctl(fd_uinput, UI_DEV_DESTROY);
+    close(fd_uinput);
+}
+
+void signalHandler(int sig)
+{
+    cleanup();
+    exit(sig);
+}
+
 void main(int argc, char** argv)
 {
+    signal(SIGINT, signalHandler);
+
     int iterations = 100;   // number of clicks until the program ends
     int min_delay = 100000; // minimum delay between clicks in microseconds
     int max_delay = 500000; // maximum delay between clicks in microseconds
@@ -54,7 +71,7 @@ void main(int argc, char** argv)
     if(argc > 3) max_delay = atoi(argv[3]);
     if(argc > 4) pre_delay = atoi(argv[4]);
 
-    int fd_uinput = init_uinput();
+    fd_uinput = init_uinput();
 
     sleep(pre_delay);
 
@@ -79,6 +96,5 @@ void main(int argc, char** argv)
 
     sleep(1);
 
-    ioctl(fd_uinput, UI_DEV_DESTROY);
-    close(fd_uinput);
+    cleanup();
 }
