@@ -33,6 +33,13 @@ PID_LATENCY_TESTER=$!
 # could be used to move cursor to specified position
 #xdotool mousemove $x $y
 
+sigint() {
+    kill -INT $PID_CLICK_SIMULATOR
+    kill -INT $PID_LATENCY_TESTER
+    kill -INT $PID_TEST_PROGRAM
+}
+
+trap sigint INT
 wait $PID_CLICK_SIMULATOR
 
 kill -INT $PID_LATENCY_TESTER
