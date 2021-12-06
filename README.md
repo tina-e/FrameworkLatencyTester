@@ -9,6 +9,16 @@ This Repository contains:
  * several test programs implemented with different frameworks (`test_programs`)
  * measurement data (`data`)
 
+### Usage
+
+ * make sure to start the program on the primary display!
+ * build everything with `make` in the root directory
+ * run `./start_measurement.sh PROGRAM_NAME NUM_ITERATIONS SUBDIRECTORY`
+   * `PROGRAM_NAME` is the name of the program under test and should be equal to a subdirectory in *test_programs*. It is also the name of the log file that will be created.
+   * `NUM_ITERATIONS` is the number of measurement iterations you want to make
+   * `SUBDIRECTORY` is the name of a subdirectory in *data* which will be created and where the log file will be stored
+ * in *start_measurement.sh*, you can also adjust delay times of the click simulator
+
 ## Framework List
 
 This list is not complete.
