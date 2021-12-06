@@ -54,7 +54,7 @@ void printLog()
 {
     cout << "time,iteration,event,program" << endl;
     for(auto const& ev : events) {
-        cout << dec << ev.time << "," << ev.iteration << "," << EVENT_NAMES[ev.event_type] << program_under_test << endl;
+        cout << dec << ev.time << "," << ev.iteration << "," << EVENT_NAMES[ev.event_type] << "," << program_under_test << endl;
     }
 }
 
