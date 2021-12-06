@@ -91,7 +91,14 @@ void main(int argc, char** argv)
 
         // wait for random time between min_delay and max_delay microseconds
         // this way we make sure we don't accidentaly sync with anything
-        usleep(min_delay + (rand() % (max_delay - min_delay)));
+        if(min_delay == max_delay) // avoid dividing by zero
+        {
+            usleep(min_delay);
+        }
+        else
+        {
+            usleep(min_delay + (rand() % (max_delay - min_delay)));
+        }
     }
 
     sleep(1);
