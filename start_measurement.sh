@@ -24,7 +24,7 @@ PID_CLICK_SIMULATOR=$!
 
 sleep "1s"
 
-EVENT=$(cat /proc/bus/input/devices | grep "Phys=py-evdev-uinput" -A 4 | grep event | awk '{split($2,a,"="); print a[2]}')
+EVENT=$(cat /proc/bus/input/devices | grep "autoclicker" -A 4 | grep event | awk '{split($2,a,"="); print a[2]}')
 EVENT="/dev/input/$EVENT"
 
 ./$PATH_LATENCY_TESTER $EVENT $TEST_PROGRAM > $PATH_DATA &
