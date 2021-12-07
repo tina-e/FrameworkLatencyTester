@@ -1,5 +1,8 @@
 #include <SDL2/SDL.h>
 #include <signal.h>
+#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 // screen size
 #define WIDTH 1920
@@ -24,6 +27,10 @@ int main(int argc, char** argv)
 
     SDL_Init(SDL_INIT_EVERYTHING);
 
+    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
+
+    SDL_RendererInfo info;
+
     // create SDL2 window and renderer
     SDL_Window* window = SDL_CreateWindow(__FILE__, 0, 0, WIDTH, HEIGHT, WINDOW_STYLE);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, RENDERER);
@@ -32,6 +39,15 @@ int main(int argc, char** argv)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
+
+    SDL_GetRendererInfo(renderer, &info);
+    cerr << "renderer " << info.name << endl;
+
+    for(int i = 0; i < SDL_GetNumRenderDrivers(); i++)
+    {
+        SDL_GetRenderDriverInfo(i, &info);
+        cerr << i << " " << info.name << endl;
+    }
 
     SDL_Event event;
 
