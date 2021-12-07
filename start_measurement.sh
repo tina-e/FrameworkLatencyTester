@@ -12,7 +12,7 @@ PATH_LATENCY_TESTER="latency_tester/bin/latency_tester"
 PATH_TEST_PROGRAM="test_programs/$TEST_PROGRAM/bin/$TEST_PROGRAM"
 PATH_DATA="data/$DATA_SUBDIRECTORY/$TEST_PROGRAM.csv"
 
-mkdir "data/$DATA_SUBDIRECTORY"
+mkdir "data/$DATA_SUBDIRECTORY" 2> /dev/null
 
 ./$PATH_TEST_PROGRAM > /dev/null &
 PID_TEST_PROGRAM=$!
