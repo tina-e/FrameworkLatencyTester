@@ -134,8 +134,15 @@ void cleanup()
     closeXShm();
 }
 
-// make sure we clean up and print current logs when the program is interrupted
-void signalHandler(int sig)
+// make sure we clean up and print current logs when the program is killed
+// log is only printed when terminated, not when interrupted
+void signalHandlerInt(int sig)
+{
+    cleanup();
+    exit(sig);
+}
+
+void signalHandlerTerm(int sig)
 {
     printLog();
     cleanup();
@@ -144,7 +151,8 @@ void signalHandler(int sig)
 
 int main(int argc, char** argv)
 {
-    signal(SIGINT, signalHandler);
+    signal(SIGINT, signalHandlerInt);
+    signal(SIGTERM, signalHandlerTerm);
 
     // variables used by evdev to get input events
     int input_fd = -1;

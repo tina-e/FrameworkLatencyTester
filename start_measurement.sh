@@ -42,5 +42,5 @@ sigint() {
 trap sigint INT
 wait $PID_CLICK_SIMULATOR
 
-kill -INT $PID_LATENCY_TESTER
+kill -TERM $PID_LATENCY_TESTER
 kill -INT $PID_TEST_PROGRAM
