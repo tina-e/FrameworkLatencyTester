@@ -1,8 +1,23 @@
 #include <SDL2/SDL.h>
 #include <signal.h>
-#include <stdio.h>
-#include <iostream>
-using namespace std;
+
+#ifndef RENDERER
+    // https://wiki.libsdl.org/SDL_RendererFlags
+    // supported:
+    // SDL_RENDERER_SOFTWARE
+    // SDL_RENDERER_ACCELERATED
+    // SDL_RENDERER_PRESENTVSYNC
+    // SDL_RENDERER_TARGETTEXTURE
+    #define RENDERER SDL_RENDERER_ACCELERATED
+#endif
+
+#ifndef DRIVER
+    // supported:
+    // opengl
+    // opengles2
+    // software
+    #define DRIVER "opengl"
+#endif
 
 // screen size
 #define WIDTH 1920
@@ -27,9 +42,7 @@ int main(int argc, char** argv)
 
     SDL_Init(SDL_INIT_EVERYTHING);
 
-    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
-
-    SDL_RendererInfo info;
+    SDL_SetHint(SDL_HINT_RENDER_DRIVER, DRIVER);
 
     // create SDL2 window and renderer
     SDL_Window* window = SDL_CreateWindow(__FILE__, 0, 0, WIDTH, HEIGHT, WINDOW_STYLE);
@@ -39,15 +52,6 @@ int main(int argc, char** argv)
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
-
-    SDL_GetRendererInfo(renderer, &info);
-    cerr << "renderer " << info.name << endl;
-
-    for(int i = 0; i < SDL_GetNumRenderDrivers(); i++)
-    {
-        SDL_GetRenderDriverInfo(i, &info);
-        cerr << i << " " << info.name << endl;
-    }
 
     SDL_Event event;
 
