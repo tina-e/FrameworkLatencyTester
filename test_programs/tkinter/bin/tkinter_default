@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+import tkinter as tk
+
+root = tk.Tk()
+root.attributes("-zoomed", True)
+root.attributes("-fullscreen", True)
+
+def mousePressed(event):
+    root.configure(background="white")
+    
+def mouseReleased(event):
+    root.configure(background="black")
+
+root.bind("<ButtonPress-1>", mousePressed)
+root.bind("<ButtonRelease-1>", mouseReleased)
+root.configure(background="black")
+#root.pack()
+
+root.mainloop()
+
