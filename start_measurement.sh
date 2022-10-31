@@ -10,8 +10,8 @@ DATA_SUBDIRECTORY=$4
 
 PATH_CLICK_SIMULATOR="click_simulator/bin/click_simulator"
 PATH_LATENCY_TESTER="latency_tester/bin/latency_tester"
-PATH_TEST_PROGRAM="test_programs/$TEST_PROGRAM/bin/$TEST_PROGRAM\_$TEST_PARAMS"
-PATH_DATA="data/$DATA_SUBDIRECTORY/$TEST_PROGRAM.csv"
+PATH_TEST_PROGRAM="test_programs/$TEST_PROGRAM/bin/${TEST_PROGRAM}_${TEST_PARAMS}"
+PATH_DATA="data/$DATA_SUBDIRECTORY/${TEST_PROGRAM}_${TEST_PARAMS}.csv"
 
 mkdir "data/$DATA_SUBDIRECTORY" 2> /dev/null
 
