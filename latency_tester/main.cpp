@@ -16,8 +16,8 @@ using namespace std;
 // position and dimension (should only one pixel!) of the region observed by XShm
 #define WIDTH 1
 #define HEIGHT 1
-#define X 200
-#define Y 200
+int X = 200;
+int Y = 200;
 
 // colors used by the test program
 #define COLOR_WHITE 0xFFFFFFFF
@@ -173,6 +173,12 @@ int main(int argc, char** argv)
     {
         event_handle = argv[1];
         testProgramName = argv[2];
+    }
+
+    if(argc == 5)
+    {
+        X = atoi(argv[3]);
+        Y = atoi(argv[4]);
     }
 
     // open input device
