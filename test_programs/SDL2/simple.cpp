@@ -40,7 +40,7 @@ int main(int argc, char** argv)
 {
     signal(SIGINT, signalHandler);
 
-    SDL_Init(SDL_INIT_EVERYTHING);
+    SDL_Init(SDL_INIT_VIDEO);
 
     SDL_SetHint(SDL_HINT_RENDER_DRIVER, DRIVER);
 
