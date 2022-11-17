@@ -80,7 +80,8 @@ void printLog()
 uint64_t micros()
 {
     using namespace chrono;
-    return duration_cast<microseconds>(high_resolution_clock::now().time_since_epoch()).count();
+    //return duration_cast<microseconds>(high_resolution_clock::now().time_since_epoch()).count();
+    return duration_cast<microseconds>(steady_clock::now().time_since_epoch()).count();
 }
 
 // initialize the XShm extension to be able to read one pixel from the screen
