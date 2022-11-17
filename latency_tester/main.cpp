@@ -211,6 +211,9 @@ int main(int argc, char** argv)
             logEvent(micros(), EVENT_TYPE_XSHM, iteration); // log color change timestamp
             iteration++;
         }
+
+        // does not seem to change anything
+        //usleep(10);
     }
 
     printLog();
