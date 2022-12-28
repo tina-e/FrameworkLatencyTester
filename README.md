@@ -58,3 +58,10 @@ This list is not complete.
  * WebGL
  * HTML5 Canvas
  * plain JavaScript
+
+## Required Packages
+
+```
+sudo apt install freeglut3-dev
+sudo apt install libglew-dev
+```
