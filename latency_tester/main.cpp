@@ -119,10 +119,31 @@ unsigned int getPixelColor()
     return image->data[2]; // red channel is enough for us
 }
 
+unsigned int getPixelColorX()
+{
+    XColor c;
+    XImage *image;
+
+    image = XGetImage (display, rootWindow, X, Y, 1, 1, AllPlanes, XYPixmap);
+
+    c.pixel = XGetPixel (image, 0, 0);
+
+    XFree (image);
+
+    XQueryColor (display, XDefaultColormap(display, XDefaultScreen (display)), &c);
+
+    //cout << c.red/256 << " " << c.green/256 << " " << c.blue/256 << "\n";
+    //cout << c.red / 256 << endl;
+
+    return c.red / 256;
+}
+
 // wait until our pixel has a specified color
 void wait_for_color(unsigned int color)
 {
+    //cout << getPixelColorX() << " " << color << endl;
     while(getPixelColor() != color)
+    //while(getPixelColorX() != color)
     {
         usleep(1);
     }
@@ -139,6 +160,7 @@ void cleanup()
 // log is only printed when terminated, not when interrupted
 void signalHandlerInt(int sig)
 {
+    printLog();
     cleanup();
     exit(sig);
 }
@@ -182,6 +204,18 @@ int main(int argc, char** argv)
         Y = atoi(argv[4]);
     }
 
+    int iteration = 0;
+
+    initXShm();
+
+    //while(true)
+    //{
+    //        logEvent(micros(), EVENT_TYPE_CLICK_EVDEV, iteration); // log input event timestamp
+    //        wait_for_color(COLOR_WHITE); // wait for test program to react
+    //        logEvent(micros(), EVENT_TYPE_XSHM, iteration); // log color change timestamp
+    //        iteration++;
+    //}
+
     // open input device
     input_fd = open(event_handle, O_RDONLY | O_NONBLOCK);
 
@@ -190,10 +224,6 @@ int main(int argc, char** argv)
         cerr << "Could not open input device " << event_handle << endl;
         exit(SIGABRT);
     }
-
-    int iteration = 0;
-
-    initXShm();
 
     while(true)
     {
@@ -208,6 +238,7 @@ int main(int argc, char** argv)
         {
             logEvent(micros(), EVENT_TYPE_CLICK_EVDEV, iteration); // log input event timestamp
             wait_for_color(COLOR_WHITE); // wait for test program to react
+            //wait_for_color(255); // wait for test program to react
             logEvent(micros(), EVENT_TYPE_XSHM, iteration); // log color change timestamp
             iteration++;
         }
