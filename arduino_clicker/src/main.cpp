@@ -127,6 +127,7 @@ void loop()
     }
     else if(MODE == MODE_MEASURE)
     {
+        delay(random(500, 1500));
         last_measurement = measure();
         Serial.println(last_measurement);
         MODE = MODE_IDLE;
