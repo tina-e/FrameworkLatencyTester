@@ -14,18 +14,22 @@
 #define PIN_LED_CLICK A1
 #define PIN_LED_THRESH A2
 
-int blackValue = -1;
-int whiteValue = -1;
+#define MODE_IDLE 0
+#define MODE_CALIBRATE 1
+#define MODE_MEASURE 2
+#define MODE_SEND 3
+
+int MODE = MODE_IDLE;
 
 int threshold = -1;
 
-bool lastState = OFF;
-bool state = OFF;
-
-unsigned long time;
+unsigned long last_measurement;
 
 int calibrate()
 {
+    int blackValue = -1;
+    int whiteValue = -1;
+
     blackValue = analogRead(PIN_SENSOR);
 
     digitalWrite(PIN_CLICK, HIGH);
@@ -62,6 +66,35 @@ int calibrate()
     return 1;
 }
 
+unsigned long measure()
+{
+    digitalWrite(PIN_CLICK, HIGH);
+    digitalWrite(PIN_LED_CLICK, HIGH);
+    unsigned long time = micros();
+    unsigned long result;
+
+    while(1)
+    {
+        if(analogRead(PIN_SENSOR) < threshold)
+        {
+            result = micros() - time;
+            digitalWrite(PIN_LED_THRESH, HIGH);
+
+            delay(100);
+            digitalWrite(PIN_CLICK, LOW);
+            digitalWrite(PIN_LED_CLICK, LOW);
+
+            while(analogRead(PIN_SENSOR) < threshold) delay(100);
+
+            digitalWrite(PIN_LED_THRESH, LOW);
+
+            break;
+        }
+    }
+
+    return result;
+}
+
 void setup()
 {
     pinMode(PIN_SENSOR, INPUT);
@@ -74,53 +107,34 @@ void setup()
 
     randomSeed(analogRead(A5));
 
-    delay(1000);
+    delay(100);
 }
 
 void loop()
 {
-    if(digitalRead(PIN_STATE) == HIGH)
+    if(MODE == MODE_IDLE)
     {
-        lastState = OFF;
-        delay(100);
-        return;
+        char message = Serial.read();
+
+        if(message == 'c') MODE = MODE_CALIBRATE;
+        else if(message == 'm') MODE = MODE_MEASURE;
+        else if(message == 's') MODE = MODE_SEND;
     }
-    else
+    else if(MODE == MODE_CALIBRATE)
     {
-        if(lastState == OFF)
-        {
-            while(!calibrate())
-            {
-                delay(1000);
-            }
-
-            lastState = ON;
-        }
-
-        Serial.println("# click");
-        digitalWrite(PIN_CLICK, HIGH);
-        digitalWrite(PIN_LED_CLICK, HIGH);
-        time = micros();
-
-        while(1)
-        {
-            if(analogRead(PIN_SENSOR) < threshold)
-            {
-                Serial.println(micros() - time);
-                digitalWrite(PIN_LED_THRESH, HIGH);
-
-                delay(100);
-                digitalWrite(PIN_CLICK, LOW);
-                digitalWrite(PIN_LED_CLICK, LOW);
-
-                while(analogRead(PIN_SENSOR) < threshold) delay(100);
-                digitalWrite(PIN_LED_THRESH, LOW);
-
-                break;
-            }
-        }
-
-        //delay(random(100, 1000));
-        delay(random(500, 1500));
+        calibrate();
+        MODE = MODE_IDLE;
     }
+    else if(MODE == MODE_MEASURE)
+    {
+        last_measurement = measure();
+        Serial.println(last_measurement);
+        MODE = MODE_IDLE;
+    }
+    else if(MODE == MODE_SEND)
+    {
+        Serial.println(last_measurement);
+        MODE = MODE_IDLE;
+    }
+    delay(50);
 }
