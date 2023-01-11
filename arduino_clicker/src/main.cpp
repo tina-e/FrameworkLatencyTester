@@ -29,6 +29,7 @@ int calibrate()
 {
     int blackValue = -1;
     int whiteValue = -1;
+    int success = 1;
 
     blackValue = analogRead(PIN_SENSOR);
 
@@ -47,23 +48,22 @@ int calibrate()
 
     Serial.print("# black: ");
     Serial.print(blackValue);
-    Serial.println();
 
-    Serial.print("# white: ");
+    Serial.print(", white: ");
     Serial.print(whiteValue);
-    Serial.println();
     
-    Serial.print("# threshold: ");
+    Serial.print(", threshold: ");
     Serial.print(threshold);
-    Serial.println();
 
     if(threshold < 100)
     {
-        Serial.println("# error: low threshold");
-        return 0;
+        Serial.print("; error: low threshold");
+        success = 0;
     }
+
+    Serial.println();
     
-    return 1;
+    return success;
 }
 
 unsigned long measure()

@@ -20,13 +20,6 @@ ser.write('c'.encode())
 ser_bytes = ser.readline()
 decoded_bytes = ser_bytes[0:len(ser_bytes)-2].decode("utf-8")
 print(decoded_bytes)
-ser_bytes = ser.readline()
-decoded_bytes = ser_bytes[0:len(ser_bytes)-2].decode("utf-8")
-print(decoded_bytes)
-ser_bytes = ser.readline()
-decoded_bytes = ser_bytes[0:len(ser_bytes)-2].decode("utf-8")
-print(decoded_bytes)
-
 
 while True:
     ser.write('m'.encode())
