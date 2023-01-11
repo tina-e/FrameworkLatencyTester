@@ -160,14 +160,14 @@ void cleanup()
 // log is only printed when terminated, not when interrupted
 void signalHandlerInt(int sig)
 {
-    printLog();
+    //printLog();
     cleanup();
     exit(sig);
 }
 
 void signalHandlerTerm(int sig)
 {
-    printLog();
+    //printLog();
     cleanup();
     exit(sig);
 }
@@ -225,6 +225,9 @@ int main(int argc, char** argv)
         exit(SIGABRT);
     }
 
+    uint64_t start_time = micros();
+    uint64_t end_time = micros();
+
     while(true)
     {
         // read input events from the specified device
@@ -236,10 +239,15 @@ int main(int argc, char** argv)
             inputEvent.code == MOUSE_BUTTON_LEFT &&
             inputEvent.value == CLICKED)
         {
-            logEvent(micros(), EVENT_TYPE_CLICK_EVDEV, iteration); // log input event timestamp
+            start_time = micros();
+            //logEvent(micros(), EVENT_TYPE_CLICK_EVDEV, iteration); // log input event timestamp
             wait_for_color(COLOR_WHITE); // wait for test program to react
             //wait_for_color(255); // wait for test program to react
-            logEvent(micros(), EVENT_TYPE_XSHM, iteration); // log color change timestamp
+
+            //logEvent(micros(), EVENT_TYPE_XSHM, iteration); // log color change timestamp
+            end_time = micros();
+
+            cout << end_time - start_time << endl;
             iteration++;
         }
 
@@ -247,7 +255,7 @@ int main(int argc, char** argv)
         //usleep(10);
     }
 
-    printLog();
+    //printLog();
     cleanup();
 
     return 0;
