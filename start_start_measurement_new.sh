@@ -8,6 +8,12 @@ killall -9 picom
 sleep 3s
 ./start_measurement_new.sh pyqt5 default $ITERATIONS $DATA_DIR
 ./start_measurement_new.sh pygame default $ITERATIONS $DATA_DIR
+./start_measurement_new.sh tkinter default $ITERATIONS $DATA_DIR
+./start_measurement_new.sh OPENGL_GLEW default $ITERATIONS $DATA_DIR
+./start_measurement_new.sh OPENGL_GLUT default $ITERATIONS $DATA_DIR
+./start_measurement_new.sh SDL2 opengl $ITERATIONS $DATA_DIR
+./start_measurement_new.sh SDL2 opengles2 $ITERATIONS $DATA_DIR
+./start_measurement_new.sh SDL2 software $ITERATIONS $DATA_DIR
 
 #DATA_DIR="2022-12-02_laptop-picom"
 #picom --config ~/.config/picom/picom.conf -b
