@@ -115,7 +115,13 @@ void closeXShm()
 // get pixel at specified position with XShm
 unsigned int getPixelColor()
 {
+    //uint64_t start_time = micros();
+
     XShmGetImage(display, rootWindow, image, X, Y, 0x00ffffff);
+
+    //uint64_t end_time = micros();
+    //cout << end_time - start_time << endl;
+
     return image->data[2]; // red channel is enough for us
 }
 
