@@ -1,20 +1,20 @@
+import java.awt.Frame;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JFrame;
 
-public class JavaSwing implements MouseListener {
+public class JavaAWT implements MouseListener {
 
-    JFrame frame;
+    Frame frame;
 
-    public JavaSwing() {
+    public JavaAWT() {
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = graphics.getDefaultScreenDevice();
 
-        frame = new JFrame();
-        frame.getContentPane().setBackground(Color.BLACK);
+        frame = new Frame();
+        frame.setBackground(Color.BLACK);
         frame.addMouseListener(this);
 
         device.setFullScreenWindow(frame);
@@ -22,7 +22,7 @@ public class JavaSwing implements MouseListener {
     }
 
     public static void main(String[] args) {
-        new JavaSwing();
+        new JavaAWT();
     }
 
     @Override
@@ -32,12 +32,12 @@ public class JavaSwing implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        frame.getContentPane().setBackground(Color.WHITE);
+        frame.setBackground(Color.WHITE);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        frame.getContentPane().setBackground(Color.BLACK);
+        frame.setBackground(Color.BLACK);
     }
 
     @Override
