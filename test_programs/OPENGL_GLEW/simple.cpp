@@ -24,10 +24,10 @@ int main(int argc, char** argv)
     SDL_Window* window = SDL_CreateWindow(__FILE__, 0, 0, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(window);
 
-    glewExperimental = GL_TRUE;
+    //glewExperimental = GL_TRUE;
     glewInit();
 
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     SDL_Event event;
