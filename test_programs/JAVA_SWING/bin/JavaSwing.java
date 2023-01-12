@@ -1,3 +1,5 @@
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -8,13 +10,15 @@ public class JavaSwing implements MouseListener {
     JFrame frame;
 
     public JavaSwing() {
-        frame = new JFrame();
-        frame.setUndecorated(true);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
+        frame = new JFrame("Fullscreen");
+        device.setFullScreenWindow(frame);
+
+
         frame.getContentPane().setBackground(Color.BLACK);
         frame.addMouseListener(this);
-        frame.setVisible(true);
+
     }
 
     public static void main(String[] args) {
