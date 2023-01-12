@@ -15,6 +15,7 @@ sleep 5s
 ./start_measurement_new.sh JavaSwing default $ITERATIONS $DATA_DIR
 ./start_measurement_new.sh pyqt6 default $ITERATIONS $DATA_DIR
 ./start_measurement_new.sh wxpython default $ITERATIONS $DATA_DIR
+./start_measurement_new.sh Qt5 default $ITERATIONS $DATA_DIR
 
 #./start_measurement_new.sh pyqt5 default $ITERATIONS $DATA_DIR
 #./start_measurement_new.sh pygame default $ITERATIONS $DATA_DIR
@@ -37,6 +38,7 @@ sleep 5s
 ./start_measurement_new.sh JavaSwing default $ITERATIONS $DATA_DIR
 ./start_measurement_new.sh pyqt6 default $ITERATIONS $DATA_DIR
 ./start_measurement_new.sh wxpython default $ITERATIONS $DATA_DIR
+./start_measurement_new.sh Qt5 default $ITERATIONS $DATA_DIR
 
 #./start_measurement_new.sh pyqt5 default $ITERATIONS $DATA_DIR
 #./start_measurement_new.sh pygame default $ITERATIONS $DATA_DIR
