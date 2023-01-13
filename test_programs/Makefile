@@ -19,7 +19,10 @@ swing:
 qt5:
 	$(MAKE) -C Qt5/ all
 
-all: glew glut sdl2 gtk awt swing qt5
+allegro:
+	$(MAKE) -C allegro/ all
+
+all: glew glut sdl2 gtk awt swing qt5 allegro
 
 clean:
 	$(MAKE) -C SDL2/ clean
@@ -29,3 +32,4 @@ clean:
 	$(MAKE) -C JavaAWT/ clean
 	$(MAKE) -C JavaSwing/ clean
 	$(MAKE) -C Qt5/ clean
+	$(MAKE) -C allegro/ clean
