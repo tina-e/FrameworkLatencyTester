@@ -1,52 +1,46 @@
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class JavaSwing implements MouseListener {
-
-    JFrame frame;
+public class JavaSwing extends JFrame {
+    private Color color;
 
     public JavaSwing() {
-        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = graphics.getDefaultScreenDevice();
+        setSize(1920, 1080);
+        setTitle("Swing Test Application");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setVisible(true);
+        color = new Color(0, 0, 0);
+    }
 
-        frame = new JFrame();
-        frame.getContentPane().setBackground(Color.BLACK);
-        frame.addMouseListener(this);
+    public void paint(Graphics g) {
+        g.setColor(color);
+        g.fillRect(0, 0, getWidth(), getHeight());
+    }
 
-        device.setFullScreenWindow(frame);
+    public void mousePressed(MouseEvent e) {
+        color = new Color(255, 255, 255);
+        repaint();
+    }
 
+    public void mouseReleased(MouseEvent e) {
+        color = new Color(0, 0, 0);
+        repaint();
     }
 
     public static void main(String[] args) {
-        new JavaSwing();
-    }
+        JavaSwing window = new JavaSwing();
+        window.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                window.mousePressed(e);
+            }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        frame.getContentPane().setBackground(Color.WHITE);
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        frame.getContentPane().setBackground(Color.BLACK);
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+            public void mouseReleased(MouseEvent e) {
+                window.mouseReleased(e);
+            }
+        });
+        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
+        device.setFullScreenWindow(window);
     }
 }
