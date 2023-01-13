@@ -21,12 +21,20 @@ public class Java2D extends JFrame {
 
     public void mousePressed(MouseEvent e) {
         color = new Color(255, 255, 255);
-        repaint();
+
+        Graphics2D g2d = (Graphics2D) getGraphics();
+        g2d.setColor(color);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+	Toolkit.getDefaultToolkit().sync();
     }
 
     public void mouseReleased(MouseEvent e) {
         color = new Color(0, 0, 0);
-        repaint();
+
+        Graphics2D g2d = (Graphics2D) getGraphics();
+        g2d.setColor(color);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+	Toolkit.getDefaultToolkit().sync();
     }
 
     public static void main(String[] args) {
