@@ -1,8 +1,6 @@
+// this application was refined using ChatGPT
 #include <GL/glut.h>
 #include <signal.h>
-
-#define WIDTH 1920
-#define HEIGHT 1080
 
 // make sure we clean up when program is interrupted
 void signalHandler(int sig)
@@ -10,39 +8,41 @@ void signalHandler(int sig)
     exit(sig);
 }
 
-void render()
-{
+int windowWidth = 1920;
+int windowHeight = 1080;
+
+int colorR = 0;
+int colorG = 0;
+int colorB = 0;
+
+void display() {
+    glClearColor(colorR, colorG, colorB, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glutSwapBuffers();
+}
+
+void mouse(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+        colorR = 1.0;
+        colorG = 1.0;
+        colorB = 1.0;
+    } else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+        colorR = 0.0;
+        colorG = 0.0;
+        colorB = 0.0;
+    }
     glutPostRedisplay();
 }
 
-void input(int button, int state, int x, int y)
-{
-    if(button == 0 && state == GLUT_DOWN)
-    {
-        glClearColor(1.0, 1.0, 1.0, 1.0);
-    }
-    else
-    {
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    }
-}
-
-int main(int argc, char** argv)
-{
+int main(int argc, char **argv) {
     signal(SIGINT, signalHandler);
-
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA); // GLUT RBG also would work
-    glutInitWindowSize(WIDTH, HEIGHT);
-    glutInitWindowPosition(0, 0);
-    glutCreateWindow(__FILE__);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+    glutInitWindowSize(windowWidth, windowHeight);
+    glutCreateWindow("GLUT Test Application");
     glutFullScreen();
-
-    glutDisplayFunc(render);
-    glutMouseFunc(input);
+    glutDisplayFunc(display);
+    glutMouseFunc(mouse);
     glutMainLoop();
-
     return 0;
 }
