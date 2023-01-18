@@ -49,15 +49,10 @@ def mouseReleased(event):
     root.configure(background="black")
     canvas.delete("all")
 
-def key(event):
-    if event.char == chr(27):
-        root.destroy()
-        quit()
 
 
 root.bind("<ButtonPress-1>", mousePressed)
 root.bind("<ButtonRelease-1>", mouseReleased)
-root.bind("<Key>", key)
 root.configure(background="black")
 #root.pack()
 

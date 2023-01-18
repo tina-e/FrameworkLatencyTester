@@ -66,11 +66,6 @@ class MainWindow(QWidget):
         self.active = False
         self.update()
 
-    # quit on escape
-    def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Escape:
-            self.close()
-
 app = QApplication(sys.argv)
 window = MainWindow()
 app.exec_()
