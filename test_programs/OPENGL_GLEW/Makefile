@@ -4,3 +4,8 @@ all:
 
 clean:
 	rm -rf bin
+
+dev:
+	make clean
+	make
+	./bin/OPENGL_GLEW_default

@@ -19,6 +19,7 @@ def randint(a, b):
     return a + int((b - a) * random.random())
 
 class MainWindow(QWidget):
+    active = False
 
     def __init__(self):
         super().__init__()
@@ -38,6 +39,10 @@ class MainWindow(QWidget):
         if self.active:
             self.drawRects(painter)
 
+        brush = QBrush(self.color)
+        painter.setBrush(brush)
+        painter.drawRect(0, 0, 100, 100)
+
         painter.end()
 
     def drawRects(self, painter):
@@ -51,11 +56,9 @@ class MainWindow(QWidget):
             color = QColor(r, g, b, t)
             brush = QBrush(color)
             painter.setBrush(brush)
-            # no border
             painter.setPen(Qt.NoPen)
             painter.drawRect(x, y, int(rect_w), int(rect_h))
 
-    
     def mousePressEvent(self, event):
         self.color = QColor(255, 255, 255)
         self.active = True

@@ -49,6 +49,23 @@ void drawRectangles()
         glVertex2f(position[0], position[1] + rect_h);
     }
 
+    // white rect top left corner
+    int w = 100;
+    int h = 100;
+    GLfloat *color = new GLfloat[3];
+    color[0] = 1.0;
+    color[1] = 1.0;
+    color[2] = 1.0;
+    GLfloat *position = new GLfloat[2];
+    position[0] = 0.0;
+    position[1] = HEIGHT - h;
+
+    glColor3f(color[0], color[1], color[2]);
+    glVertex2f(position[0], position[1]);
+    glVertex2f(position[0] + w, position[1]);
+    glVertex2f(position[0] + w, position[1] + h);
+    glVertex2f(position[0], position[1] + h);
+
     glEnd();
 }
 
