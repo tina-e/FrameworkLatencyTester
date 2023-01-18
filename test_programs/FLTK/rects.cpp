@@ -37,7 +37,7 @@ class MainWindow : public Fl_Double_Window
                     fl_rectf(x, y, width, height);
                 }
                 fl_color(FL_WHITE);
-                fl_rectf(0, 0, 300, 300, 20);
+                fl_rectf(0, 0, 300, 300);
             }
             else
             {
