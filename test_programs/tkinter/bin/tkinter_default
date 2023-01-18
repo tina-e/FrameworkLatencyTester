@@ -1,18 +1,67 @@
 #!/usr/bin/python3
 import tkinter as tk
+import random
+
+WIDTH = 1920
+HEIGHT = 1080
+n_rects = 1000
+n_horizontal = 10
+n_vertical = 10
+rect_w = WIDTH / n_horizontal
+rect_h = HEIGHT / n_vertical
+
+def randint(a, b):
+    return a + int((b - a) * random.random())
 
 root = tk.Tk()
 root.attributes("-zoomed", True)
 root.attributes("-fullscreen", True)
 
+
+canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="black")
+canvas.pack()
+
+
+def rgbToHex(r, g, b):
+    return "#%02x%02x%02x" % (r, g, b)
+
+
+# draw n_rects rects with random:
+# - position (withing the screen)
+# - color 
+# - transparency
+def drawRects():
+    for i in range(n_rects):
+        x = randint(0, WIDTH - rect_w)
+        y = randint(0, HEIGHT - rect_h)
+        r = randint(0, 255)
+        g = randint(0, 255)
+        b = randint(0, 255)
+        t = randint(0, 255) # transparency unused, tkinter doesn't support it
+        # https://stackoverflow.com/questions/62117203/how-to-make-a-tkinter-canvas-polygon-transparent
+        color = rgbToHex(r, g, b)
+        canvas.create_rectangle(x, y, x + int(rect_w), y + int(rect_h), fill=color, outline="")
+    
+
+
+
 def mousePressed(event):
     root.configure(background="white")
+    drawRects()
     
 def mouseReleased(event):
     root.configure(background="black")
+    canvas.delete("all")
+
+def key(event):
+    if event.char == chr(27):
+        root.destroy()
+        quit()
+
 
 root.bind("<ButtonPress-1>", mousePressed)
 root.bind("<ButtonRelease-1>", mouseReleased)
+root.bind("<Key>", key)
 root.configure(background="black")
 #root.pack()
 
