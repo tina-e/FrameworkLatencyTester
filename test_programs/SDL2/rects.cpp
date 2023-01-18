@@ -2,21 +2,21 @@
 #include <signal.h>
 
 #ifndef RENDERER
-    // https://wiki.libsdl.org/SDL_RendererFlags
-    // supported:
-    // SDL_RENDERER_SOFTWARE
-    // SDL_RENDERER_ACCELERATED
-    // SDL_RENDERER_PRESENTVSYNC
-    // SDL_RENDERER_TARGETTEXTURE
-    #define RENDERER SDL_RENDERER_ACCELERATED
+// https://wiki.libsdl.org/SDL_RendererFlags
+// supported:
+// SDL_RENDERER_SOFTWARE
+// SDL_RENDERER_ACCELERATED
+// SDL_RENDERER_PRESENTVSYNC
+// SDL_RENDERER_TARGETTEXTURE
+#define RENDERER SDL_RENDERER_ACCELERATED
 #endif
 
 #ifndef DRIVER
-    // supported:
-    // opengl
-    // opengles2
-    // software
-    #define DRIVER "opengl"
+// supported:
+// opengl
+// opengles2
+// software
+#define DRIVER "opengl"
 #endif
 
 // screen size
@@ -42,20 +42,20 @@ int rect_w = WIDTH / n_horizontal;
 int rect_h = HEIGHT / n_vertical;
 int margin = 5;
 
-void render(SDL_Renderer* renderer)
+void render(SDL_Renderer *renderer)
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     for (int i = 0; i < n_horizontal; i++)
     {
         for (int j = 0; j < n_vertical; j++)
         {
-            SDL_Rect rect = { i * rect_w, j * rect_h, rect_w - margin, rect_h - margin };
+            SDL_Rect rect = {i * rect_w, j * rect_h, rect_w - margin, rect_h - margin};
             SDL_RenderFillRect(renderer, &rect);
         }
     }
 }
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     signal(SIGINT, signalHandler);
 
@@ -64,8 +64,8 @@ int main(int argc, char** argv)
     SDL_SetHint(SDL_HINT_RENDER_DRIVER, DRIVER);
 
     // create SDL2 window and renderer
-    SDL_Window* window = SDL_CreateWindow(__FILE__, 0, 0, WIDTH, HEIGHT, WINDOW_STYLE);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, RENDERER);
+    SDL_Window *window = SDL_CreateWindow(__FILE__, 0, 0, WIDTH, HEIGHT, WINDOW_STYLE);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, RENDERER);
 
     // draw a black image
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -74,7 +74,7 @@ int main(int argc, char** argv)
 
     SDL_Event event;
 
-    while(1)
+    while (1)
     {
         // get input events via SDL
         while (SDL_PollEvent(&event))
@@ -97,6 +97,14 @@ int main(int argc, char** argv)
                     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
                     SDL_RenderClear(renderer);
                     SDL_RenderPresent(renderer);
+                }
+            }
+            if (event.type == SDL_KEYDOWN)
+            {
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    SDL_Quit();
+                    return 0;
                 }
             }
         }

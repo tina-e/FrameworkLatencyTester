@@ -1,2 +1,3 @@
 *.swp
-*/bin/*
+# anything in a bin directory
+bin/
