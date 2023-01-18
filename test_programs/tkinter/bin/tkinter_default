@@ -17,7 +17,6 @@ root = tk.Tk()
 root.attributes("-zoomed", True)
 root.attributes("-fullscreen", True)
 
-
 canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="black")
 canvas.pack()
 
@@ -25,11 +24,10 @@ canvas.pack()
 def rgbToHex(r, g, b):
     return "#%02x%02x%02x" % (r, g, b)
 
+def drawNormalRect(color, rect):
+    x, y, w, h = rect
+    canvas.create_rectangle(x, y, x + int(rect_w), y + int(rect_h), fill=color, outline="")
 
-# draw n_rects rects with random:
-# - position (withing the screen)
-# - color 
-# - transparency
 def drawRects():
     for i in range(n_rects):
         x = randint(0, WIDTH - rect_w)
@@ -40,11 +38,9 @@ def drawRects():
         t = randint(0, 255) # transparency unused, tkinter doesn't support it
         # https://stackoverflow.com/questions/62117203/how-to-make-a-tkinter-canvas-polygon-transparent
         color = rgbToHex(r, g, b)
-        canvas.create_rectangle(x, y, x + int(rect_w), y + int(rect_h), fill=color, outline="")
+        drawNormalRect(color, (x, y, int(rect_w), int(rect_h)))
+        
     
-
-
-
 def mousePressed(event):
     root.configure(background="white")
     drawRects()
