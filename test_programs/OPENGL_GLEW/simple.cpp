@@ -27,7 +27,12 @@ int main(int argc, char** argv)
     //glewExperimental = GL_TRUE;
     glewInit();
 
-    //SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+#ifdef DOUBLEBUF
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+#endif
+
+
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     SDL_Event event;

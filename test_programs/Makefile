@@ -10,9 +10,6 @@ glew:
 gtk:
 	$(MAKE) -C gtk/ all
 
-awt:
-	$(MAKE) -C JavaAWT/ all
-
 swing:
 	$(MAKE) -C JavaSwing/ all
 
@@ -32,8 +29,7 @@ clean:
 	$(MAKE) -C OPENGL_GLUT/ clean
 	$(MAKE) -C OPENGL_GLEW/ clean
 	$(MAKE) -C gtk/ clean
-	$(MAKE) -C JavaAWT/ clean
 	$(MAKE) -C JavaSwing/ clean
 	$(MAKE) -C Qt5/ clean
 	$(MAKE) -C allegro/ clean
-	$(MAKE) -C java2d/ clean
+	$(MAKE) -C Java2D/ clean
