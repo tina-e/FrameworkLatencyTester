@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 {
     signal(SIGINT, signalHandler);
 
-    SDL_Init(SDL_INIT_EVERYTHING); // maybe we have to reduce this?
+    SDL_Init(SDL_INIT_VIDEO); // maybe we have to reduce this?
 
     SDL_Window* window = SDL_CreateWindow(__FILE__, 0, 0, WIDTH, HEIGHT, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(window);
