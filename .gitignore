@@ -1,3 +1,4 @@
 *.swp
 */bin/*
 arduino_clicker/.pio/
+bin/

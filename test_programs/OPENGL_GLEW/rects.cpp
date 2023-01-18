@@ -8,12 +8,59 @@
 
 bool running = true;
 
+bool is_pressed = false;
+bool do_redraw = true;
+
+const int n_rects = 1000;
+int n_horizontal = 10;
+int n_vertical = 10;
+int rect_w = WIDTH / n_horizontal;
+int rect_h = HEIGHT / n_vertical;
+
+// make sure we clean up when program is interrupted
 void signalHandler(int sig)
 {
     running = false;
     SDL_Quit();
     exit(sig);
 }
+
+
+/*
+GLfloat *randomColor()
+{
+    GLfloat *color = new GLfloat[4];
+    color[0] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    color[1] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    color[2] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    color[3] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    return color;
+}
+
+GLfloat *randomPosition()
+{
+    GLfloat *position = new GLfloat[2];
+    position[0] = static_cast<float>(rand() % (WIDTH - rect_w));
+    position[1] = static_cast<float>(rand() % (HEIGHT - rect_h));
+    return position;
+}
+
+void drawRandomRect()
+{
+    glBegin(GL_QUADS);
+
+    GLfloat *color = randomColor();
+    GLfloat *position = randomPosition();
+
+    glColor4f(color[0], color[1], color[2], color[3]);
+    glVertex2f(position[0], position[1]);
+    glVertex2f(position[0] + rect_w, position[1]);
+    glVertex2f(position[0] + rect_w, position[1] + rect_h);
+    glVertex2f(position[0], position[1] + rect_h);
+
+    glEnd();
+}
+*/
 
 int main(int argc, char** argv)
 {
@@ -42,6 +89,8 @@ int main(int argc, char** argv)
 
     while (running)
     {
+        bool do_redraw = false;
+
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_MOUSEBUTTONDOWN)
@@ -103,6 +152,8 @@ int main(int argc, char** argv)
                 glFinish();
             }
         }
+
+        SDL_GL_SwapWindow(window);
     }
 
     return 0;
