@@ -17,7 +17,7 @@ root = tk.Tk()
 root.attributes("-zoomed", True)
 root.attributes("-fullscreen", True)
 
-canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="black")
+canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="black", borderwidth=0, highlightthickness=0);
 canvas.pack()
 
 
@@ -26,7 +26,7 @@ def rgbToHex(r, g, b):
 
 def drawNormalRect(color, rect):
     x, y, w, h = rect
-    canvas.create_rectangle(x, y, x + int(rect_w), y + int(rect_h), fill=color, outline="")
+    canvas.create_rectangle(x, y, x + w, y + h, fill=color, outline="")
 
 def drawRects():
     for i in range(n_rects):
@@ -43,18 +43,21 @@ def drawRects():
     
 def mousePressed(event):
     root.configure(background="white")
+    canvas.configure(background="white")
+    
     drawRects()
+
+    color = rgbToHex(255, 255, 255)
+    drawNormalRect(color, (0, 0, 300, 300))
+
     
 def mouseReleased(event):
     root.configure(background="black")
+    canvas.configure(background="black")
     canvas.delete("all")
-
-
 
 root.bind("<ButtonPress-1>", mousePressed)
 root.bind("<ButtonRelease-1>", mouseReleased)
-root.configure(background="black")
-#root.pack()
 
 root.mainloop()
 

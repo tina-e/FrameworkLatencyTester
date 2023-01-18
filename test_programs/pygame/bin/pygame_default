@@ -53,7 +53,7 @@ def drawRects():
         drawTransparentRect(screen, color, (x, y, int(rect_w), int(rect_h)), t)
     
     # white top left rect for sensor
-    drawNormalRect(screen, background_color_white, (0, 0, 100, 100))
+    drawNormalRect(screen, background_color_white, (0, 0, 300, 300))
 
 while running:
     event = pygame.event.poll()

@@ -50,8 +50,8 @@ void drawRectangles()
     }
 
     // white rect top left corner
-    int w = 100;
-    int h = 100;
+    int w = 300;
+    int h = 300;
     GLfloat *color = new GLfloat[3];
     color[0] = 1.0;
     color[1] = 1.0;

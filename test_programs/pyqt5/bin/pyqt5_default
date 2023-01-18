@@ -41,7 +41,7 @@ class MainWindow(QWidget):
 
         brush = QBrush(self.color)
         painter.setBrush(brush)
-        painter.drawRect(0, 0, 100, 100)
+        painter.drawRect(0, 0, 300, 300)
 
         painter.end()
 
