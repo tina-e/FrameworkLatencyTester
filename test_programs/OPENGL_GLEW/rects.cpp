@@ -97,19 +97,13 @@ int main(int argc, char** argv)
             {
                 if (event.button.button == SDL_BUTTON_LEFT)
                 {
-                    //glDisable(GL_DEPTH_TEST);
-                    //glDisable(GL_ALPHA_TEST);
-                    //glDisable(GL_STENCIL_TEST);
-                    //glEnable(GL_COLOR_MATERIAL);
-                    //glEnable (GL_BLEND);
-                    //glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                    glClear(GL_COLOR_BUFFER_BIT);
                     for (int i = 0; i < 1000; i++)
                     {
                         float r = (float)rand() / RAND_MAX;
                         float g = (float)rand() / RAND_MAX;
                         float b = (float)rand() / RAND_MAX;
-                        float a = (float)rand() / RAND_MAX;
-                        glColor4f(r, g, b, a);
+                        glColor3f(r, g, b);
 
                         int x = rand() % WIDTH;
                         int y = rand() % HEIGHT;
@@ -123,21 +117,17 @@ int main(int argc, char** argv)
                         glVertex2i(x, y + height);
                         glEnd();
                     }
-                    //glEnable(GL_DEPTH_TEST);
-                    //glEnable(GL_ALPHA_TEST);
-                    //glEnable(GL_STENCIL_TEST);
-                    //glDisable(GL_BLEND);
-                    glColor4f(1, 1, 1, 1);
+
+                    glColor3f(1, 1, 1);
                     glBegin(GL_QUADS);
                     glVertex2i(0, 0);
                     glVertex2i(300, 0);
                     glVertex2i(300, 300);
                     glVertex2i(0, 300);
                     glEnd();
-                    //glFlush();
+                    glFlush();
                     SDL_GL_SwapWindow(window);
                     glClear(GL_COLOR_BUFFER_BIT);
-                    glFinish();
                 }
             }
 
@@ -146,14 +136,13 @@ int main(int argc, char** argv)
                 if(event.button.button == SDL_BUTTON_LEFT)
                 {
                     glClearColor(0.0f, 0.0f, 0.0, 1.0f);
+                    SDL_GL_SwapWindow(window);
+                    glClear(GL_COLOR_BUFFER_BIT);
                 }
-                SDL_GL_SwapWindow(window);
-                glClear(GL_COLOR_BUFFER_BIT);
-                glFinish();
             }
         }
 
-        SDL_GL_SwapWindow(window);
+        //SDL_GL_SwapWindow(window);
     }
 
     return 0;
