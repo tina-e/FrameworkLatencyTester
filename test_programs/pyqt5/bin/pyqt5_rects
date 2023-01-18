@@ -52,7 +52,7 @@ class MainWindow(QWidget):
             r = randint(0, 255)
             g = randint(0, 255)
             b = randint(0, 255)
-            t = randint(0, 255)
+            t = 255 #randint(0, 255)
             color = QColor(r, g, b, t)
             brush = QBrush(color)
             painter.setBrush(brush)

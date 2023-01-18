@@ -39,7 +39,7 @@ static void draw(cairo_t *cr)
             float r = (float)rand() / RAND_MAX;
             float g = (float)rand() / RAND_MAX;
             float b = (float)rand() / RAND_MAX;
-            float a = (float)rand() / RAND_MAX;
+            float a = 1; //(float)rand() / RAND_MAX;
             cairo_set_source_rgba(cr, r, g, b, a);
 
             int x = rand() % 1920;

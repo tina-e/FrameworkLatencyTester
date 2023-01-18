@@ -21,7 +21,7 @@ GLfloat *randomColor()
     color[0] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
     color[1] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
     color[2] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-    color[3] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    color[3] = 1; //static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
     return color;
 }
 
@@ -71,28 +71,27 @@ void drawRectangles()
 
 void display()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-    if (is_pressed)
-        drawRectangles();
-    glFlush();
+
 }
 
 void input(int button, int state, int x, int y)
 {
-    if (button == 0 && state == GLUT_DOWN && !is_pressed)
-    {
-        is_pressed = true;
-        glClearColor(1.0, 1.0, 1.0, 1.0);
-        glutSwapBuffers();
-        glutPostRedisplay();
-    }
-    else if (is_pressed)
-    {
-        is_pressed = false;
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glutSwapBuffers();
-        glutPostRedisplay();
-    }
+	if (button == 0 && state == GLUT_DOWN && !is_pressed)
+	{
+		glClear(GL_COLOR_BUFFER_BIT);
+		is_pressed = true;
+		glClearColor(1.0, 1.0, 1.0, 1.0);
+		drawRectangles();
+	}
+	else if (is_pressed)
+	{
+		is_pressed = false;
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+	glutSwapBuffers();
+	glutPostRedisplay();
+	glFlush();
 }
 
 void reshape(int w, int h)
@@ -106,16 +105,21 @@ void reshape(int w, int h)
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+    glutCreateWindow("GLUT Test Application");
     glutInitWindowSize(WIDTH, HEIGHT);
-    glutInitWindowPosition(0, 0);
-    glutCreateWindow(__FILE__);
-
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glutFullScreen();
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
     glutMouseFunc(input);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glutSwapBuffers();
+    glutPostRedisplay();
+    glFlush();
 
     glutMainLoop();
     return 0;

@@ -49,7 +49,7 @@ void render(SDL_Renderer *renderer)
         uint8_t r = rand() % 255;
         uint8_t g = rand() % 255;
         uint8_t b = rand() % 255;
-        uint8_t a = 55 + rand() % 200;
+        uint8_t a = 255; //55 + rand() % 200;
 
         int x = rand() % (WIDTH - rect_w);
         int y = rand() % (HEIGHT - rect_h);

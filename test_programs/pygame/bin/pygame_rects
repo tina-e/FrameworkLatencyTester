@@ -48,7 +48,7 @@ def drawRects():
         r = randint(0, 255)
         g = randint(0, 255)
         b = randint(0, 255)
-        t = randint(0, 255)
+        t = 255 #randint(0, 255)
         color = (r, g, b)
         drawTransparentRect(screen, color, (x, y, int(rect_w), int(rect_h)), t)
     
