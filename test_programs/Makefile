@@ -10,9 +10,6 @@ glew:
 gtk:
 	$(MAKE) -C gtk/ all
 
-awt:
-	$(MAKE) -C JavaAWT/ all
-
 swing:
 	$(MAKE) -C JavaSwing/ all
 
@@ -25,15 +22,22 @@ qt5:
 allegro:
 	$(MAKE) -C allegro/ all
 
-all: glew glut sdl2 gtk awt swing qt5 allegro java2d
+Java2D:
+	$(MAKE) -C Java2D/ all
+
+FLTK:
+	$(MAKE) -C FLTK/ all
+
+
+all: glew glut sdl2 gtk swing qt5 allegro java2d FLTK
 
 clean:
 	$(MAKE) -C SDL2/ clean
 	$(MAKE) -C OPENGL_GLUT/ clean
 	$(MAKE) -C OPENGL_GLEW/ clean
 	$(MAKE) -C gtk/ clean
-	$(MAKE) -C JavaAWT/ clean
 	$(MAKE) -C JavaSwing/ clean
 	$(MAKE) -C Qt5/ clean
 	$(MAKE) -C allegro/ clean
-	$(MAKE) -C java2d/ clean
+	$(MAKE) -C Java2D/ clean
+	$(MAKE) -C FLTK/ clean
