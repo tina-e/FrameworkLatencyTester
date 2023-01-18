@@ -22,7 +22,14 @@ qt5:
 allegro:
 	$(MAKE) -C allegro/ all
 
-all: glew glut sdl2 gtk awt swing qt5 allegro java2d
+Java2D:
+	$(MAKE) -C Java2D/ all
+
+FLTK:
+	$(MAKE) -C FLTK/ all
+
+
+all: glew glut sdl2 gtk swing qt5 allegro java2d FLTK
 
 clean:
 	$(MAKE) -C SDL2/ clean
@@ -33,3 +40,4 @@ clean:
 	$(MAKE) -C Qt5/ clean
 	$(MAKE) -C allegro/ clean
 	$(MAKE) -C Java2D/ clean
+	$(MAKE) -C FLTK/ clean
