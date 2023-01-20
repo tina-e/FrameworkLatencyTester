@@ -64,4 +64,14 @@ This list is not complete.
 ```
 sudo apt install freeglut3-dev
 sudo apt install libglew-dev
+sudo apt install libgtk-3-dev
+sudo apt install libcairo2-dev
+sudo apt install default-jre default-jdk
+sudo apt install libfltk1.3-dev libx11-dev libxext-dev
+sudo apt install liballegro5-dev
+
+pip3 install wxPython
+pip3 install pyqt5
+pip3 install pyqt6
+pip3 install pygame
 ```
