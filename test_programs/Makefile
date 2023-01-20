@@ -19,9 +19,6 @@ java2d:
 qt5:
 	$(MAKE) -C Qt5/ all
 
-allegro:
-	$(MAKE) -C allegro/ all
-
 Java2D:
 	$(MAKE) -C Java2D/ all
 
@@ -29,7 +26,7 @@ FLTK:
 	$(MAKE) -C FLTK/ all
 
 
-all: glew glut sdl2 gtk swing qt5 allegro java2d FLTK
+all: glew glut sdl2 gtk swing qt5 java2d FLTK
 
 clean:
 	$(MAKE) -C SDL2/ clean
@@ -38,6 +35,5 @@ clean:
 	$(MAKE) -C gtk/ clean
 	$(MAKE) -C JavaSwing/ clean
 	$(MAKE) -C Qt5/ clean
-	$(MAKE) -C allegro/ clean
 	$(MAKE) -C Java2D/ clean
 	$(MAKE) -C FLTK/ clean
