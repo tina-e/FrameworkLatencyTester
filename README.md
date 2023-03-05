@@ -74,4 +74,5 @@ pip3 install wxPython
 pip3 install pyqt5
 pip3 install pyqt6
 pip3 install pygame
+pip3 install pyglet
 ```
