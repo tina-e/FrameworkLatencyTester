@@ -52,15 +52,14 @@ void drawRectangles()
     // white rect top left corner
     int w = 300;
     int h = 300;
-    GLfloat *color = new GLfloat[3];
-    color[0] = 1.0;
-    color[1] = 1.0;
-    color[2] = 1.0;
     GLfloat *position = new GLfloat[2];
     position[0] = 0.0;
     position[1] = HEIGHT - h;
 
-    glColor3f(color[0], color[1], color[2]);
+    //position[0] = 800;
+    //position[1] = 800;
+
+    glColor4f(1, 1, 1, 1);
     glVertex2f(position[0], position[1]);
     glVertex2f(position[0] + w, position[1]);
     glVertex2f(position[0] + w, position[1] + h);
