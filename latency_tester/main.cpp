@@ -112,6 +112,17 @@ void closeXShm()
     XDestroyImage(image);
 }
 
+void testXShm()
+{
+    uint64_t start_time = micros();
+    XShmGetImage(display, rootWindow, image, X, Y, 0x00ffffff);
+    uint64_t end_time = micros();
+    cout << end_time - start_time << endl;
+
+    //cout << image->data[2] << endl;
+    //usleep(10000);
+}
+
 // get pixel at specified position with XShm
 unsigned int getPixelColor()
 {
@@ -236,6 +247,9 @@ int main(int argc, char** argv)
 
     while(true)
     {
+        //testXShm();
+        //continue;
+
         // read input events from the specified device
         err = read(input_fd, &inputEvent, sizeof(struct input_event));
 

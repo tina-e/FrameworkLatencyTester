@@ -14,7 +14,15 @@ rects:
 	rm *.class
 	rm Java2D_rects.jar
 
-all: simple rects
+image:
+	javac Java2D_image.java
+	jar cvmf MANIFEST_IMAGE.MF Java2D_image.jar *.class
+	mkdir -p bin
+	cat stub.sh Java2D_image.jar > bin/Java2D_image && chmod +x bin/Java2D_image
+	rm *.class
+	rm Java2D_image.jar
+
+all: simple rects image
 
 clean:
 	rm -rf bin
