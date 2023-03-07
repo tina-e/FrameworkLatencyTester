@@ -14,7 +14,15 @@ rects:
 	rm *.class
 	rm JavaSwing_rects.jar
 
-all: simple rects
+image:
+	javac JavaSwing_image.java
+	jar cvmf MANIFEST_IMAGE.MF JavaSwing_image.jar *.class
+	mkdir -p bin
+	cat stub.sh JavaSwing_image.jar > bin/JavaSwing_image && chmod +x bin/JavaSwing_image
+	rm *.class
+	rm JavaSwing_image.jar
+
+all: simple rects image
 
 clean:
 	rm -rf bin
