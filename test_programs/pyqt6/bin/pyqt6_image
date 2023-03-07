@@ -1,0 +1,46 @@
+#!/usr/bin/python3
+
+from PyQt6 import uic
+from PyQt6.QtWidgets import * 
+from PyQt6.QtGui import * 
+from PyQt6.QtCore import * 
+import sys
+
+class MainWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setGeometry(0, 0, 1920, 1080)
+        self.setWindowTitle('PyQt6 Test Application')
+        #self.setWindowFlags(Qt.X11BypassWindowManagerHint)
+        self.showFullScreen()
+        self.color = QColor(0, 0, 0)
+        self.img = QPixmap("noise.png")
+        self.pressed = False
+        self.show()
+
+    def paintEvent(self, event):
+        painter = QPainter()
+        painter.begin(self)
+
+        if self.pressed:
+            painter.drawPixmap(0, 0, self.img)
+        else:
+            brush = QBrush(self.color)
+            painter.setBrush(brush)
+            painter.drawRect(0, 0, 1920, 1080)
+
+        painter.end()
+
+    def mousePressEvent(self, event):
+        self.pressed = True
+        #self.repaint()
+        self.update()
+
+    def mouseReleaseEvent(self, event):
+        self.pressed = False
+        #self.repaint()
+        self.update()
+
+app = QApplication(sys.argv)
+window = MainWindow()
+app.exec()
