@@ -20,7 +20,7 @@ public class Java2D_image extends JFrame {
         Graphics2D g2d = (Graphics2D) getGraphics();
         if (pressed)
         {
-            g2d.drawImage(image, 0, 0, null);
+            g2d.drawImage(image, 0, 0, this);
         }
         else
         {
@@ -32,7 +32,7 @@ public class Java2D_image extends JFrame {
     public void mousePressed(MouseEvent e) {
         pressed = true;
         Graphics2D g2d = (Graphics2D) getGraphics();
-        g2d.drawImage(image, 0, 0, null);
+        g2d.drawImage(image, 0, 0, this);
         Toolkit.getDefaultToolkit().sync();
     }
 

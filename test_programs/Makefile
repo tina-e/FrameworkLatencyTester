@@ -25,8 +25,13 @@ Java2D:
 FLTK:
 	$(MAKE) -C FLTK/ all
 
+xlib:
+	$(MAKE) -C xlib/ all
 
-all: glew glut sdl2 gtk swing qt5 java2d FLTK
+xcb:
+	$(MAKE) -C xcb/ all
+
+all: glew glut sdl2 gtk swing qt5 java2d FLTK xlib xcb
 
 clean:
 	$(MAKE) -C SDL2/ clean
@@ -37,3 +42,5 @@ clean:
 	$(MAKE) -C Qt5/ clean
 	$(MAKE) -C Java2D/ clean
 	$(MAKE) -C FLTK/ clean
+	$(MAKE) -C xlib/ clean
+	$(MAKE) -C xcb/ clean
