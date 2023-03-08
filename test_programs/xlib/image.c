@@ -94,19 +94,30 @@ void redraw() {
 }
 
 void toggleFullscreen() {
-    Atom wmState = XInternAtom(display, "_NET_WM_STATE", False);
-    Atom wmFullscreen = XInternAtom(display, "_NET_WM_STATE_FULLSCREEN", False);
+    // Plasma
+    Atom wmState = XInternAtom(display, "_NET_WM_STATE", True);
+    Atom wmFullscreen = XInternAtom(display, "_NET_WM_STATE_FULLSCREEN", True);
 
-    XEvent event = { 0 };
-    event.type = ClientMessage;
-    event.xclient.window = window;
-    event.xclient.message_type = wmState;
-    event.xclient.format = 32;
-    event.xclient.data.l[0] = 2; // _NET_WM_STATE_TOGGLE
-    event.xclient.data.l[1] = wmFullscreen;
-    event.xclient.data.l[2] = 0;
+    Atom wm_state   = XInternAtom (display, "_NET_WM_STATE", True );
+    Atom wm_fullscreen = XInternAtom (display, "_NET_WM_STATE_FULLSCREEN", True );
 
-    XSendEvent(display, DefaultRootWindow(display), False, SubstructureNotifyMask | SubstructureRedirectMask, &event);
+    XChangeProperty(display, window, wm_state, XA_ATOM, 32,
+		    PropModeReplace, (unsigned char *)&wm_fullscreen, 1);
+
+    // Xfce
+    //Atom wmState = XInternAtom(display, "_NET_WM_STATE", False);
+    //Atom wmFullscreen = XInternAtom(display, "_NET_WM_STATE_FULLSCREEN", False);
+
+    //XEvent event = { 0 };
+    //event.type = ClientMessage;
+    //event.xclient.window = window;
+    //event.xclient.message_type = wmState;
+    //event.xclient.format = 32;
+    //event.xclient.data.l[0] = 2; // _NET_WM_STATE_TOGGLE
+    //event.xclient.data.l[1] = wmFullscreen;
+    //event.xclient.data.l[2] = 0;
+
+    //XSendEvent(display, DefaultRootWindow(display), False, SubstructureNotifyMask | SubstructureRedirectMask, &event);
 }
 
 int main() {
