@@ -68,7 +68,6 @@ void read_png_file(char* file_name, unsigned char** image_data)
 
 
     int rowbytes = png_get_rowbytes(png_ptr, info_ptr);
-    printf("%d %d %d\n", color_type, bit_depth, rowbytes);
     *image_data = (unsigned char*) malloc(rowbytes * HEIGHT);
     png_bytep* row_pointers = (png_bytep*) malloc(sizeof(png_bytep) * HEIGHT);
     for (int y = 0; y < HEIGHT; y++)
