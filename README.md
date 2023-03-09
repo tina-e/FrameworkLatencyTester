@@ -71,6 +71,7 @@ sudo apt install libfltk1.3-dev libx11-dev libxext-dev
 sudo apt install liballegro5-dev
 sudo apt install libxcb-keysyms1-dev
 sudo apt install libxcb-util-dev
+sudo apt install libxcb-image0-dev
 sudo apt install libsoil-dev
 
 pip3 install wxPython
