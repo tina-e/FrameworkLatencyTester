@@ -9,6 +9,7 @@ root.attributes("-zoomed", True)
 root.attributes("-fullscreen", True)
 
 canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="black", borderwidth=0, highlightthickness=0);
+canvas.pack()
 
 def mousePressed(event):
     root.configure(background="white")
