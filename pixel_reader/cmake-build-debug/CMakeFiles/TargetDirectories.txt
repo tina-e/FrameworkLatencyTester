@@ -1,0 +1,3 @@
+D:/Studium/Masterarbeit/pixel_reader/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Studium/Masterarbeit/pixel_reader/cmake-build-debug/CMakeFiles/untitled.dir
+D:/Studium/Masterarbeit/pixel_reader/cmake-build-debug/CMakeFiles/rebuild_cache.dir
