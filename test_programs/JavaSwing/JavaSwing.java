@@ -8,36 +8,37 @@ public class JavaSwing extends JFrame {
     public JavaSwing() {
         setSize(1920, 1080);
         setTitle("Swing Test Application");
+        setUndecorated(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
         color = new Color(0, 0, 0);
     }
 
     public void paint(Graphics g) {
-	    g.setColor(color);
-	    g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(color);
+        g.fillRect(0, 0, getWidth(), getHeight());
     }
 
     public void mousePressed(MouseEvent e) {
         color = new Color(255, 255, 255);
 
-	Graphics g = getGraphics();
-	if (g != null) {
-		g.setColor(color);
-		g.fillRect(0, 0, getWidth(), getHeight());
-		Toolkit.getDefaultToolkit().sync();
-	}
+        Graphics g = getGraphics();
+        if (g != null) {
+            g.setColor(color);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            Toolkit.getDefaultToolkit().sync();
+        }
     }
 
     public void mouseReleased(MouseEvent e) {
         color = new Color(0, 0, 0);
 
-	Graphics g = getGraphics();
-	if (g != null) {
-		g.setColor(color);
-		g.fillRect(0, 0, getWidth(), getHeight());
-		Toolkit.getDefaultToolkit().sync();
-	}
+        Graphics g = getGraphics();
+        if (g != null) {
+            g.setColor(color);
+            g.fillRect(0, 0, getWidth(), getHeight());
+            Toolkit.getDefaultToolkit().sync();
+        }
     }
 
     public static void main(String[] args) {

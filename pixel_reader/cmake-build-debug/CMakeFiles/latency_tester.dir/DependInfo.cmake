@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Studium/Masterarbeit/pixel_reader/main.cpp" "D:/Studium/Masterarbeit/pixel_reader/cmake-build-debug/CMakeFiles/untitled.dir/main.cpp.obj"
+  "D:/Studium/Masterarbeit/mine/FrameworkLatencyTester/pixel_reader/main.cpp" "D:/Studium/Masterarbeit/mine/FrameworkLatencyTester/pixel_reader/cmake-build-debug/CMakeFiles/latency_tester.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

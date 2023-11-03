@@ -9,19 +9,19 @@ public class JavaSwing_rects extends JFrame {
     public JavaSwing_rects() {
         setSize(1920, 1080);
         setTitle("Swing Test Application");
+        setUndecorated(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
         color = new Color(0, 0, 0);
     }
 
     public void paint(Graphics g) {
-	    g.setColor(color);
-	    g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(color);
+        g.fillRect(0, 0, getWidth(), getHeight());
     }
 
     public void mousePressed(MouseEvent e) {
         color = new Color(255, 255, 255);
-
 
         Graphics g = getGraphics();
 
@@ -34,7 +34,7 @@ public class JavaSwing_rects extends JFrame {
             int red = r.nextInt(254);
             int green = r.nextInt(255);
             int blue = r.nextInt(255);
-            float alpha = 255; //r.nextFloat();
+            float alpha = 255; // r.nextFloat();
             g.setColor(new Color(red, green, blue));
             g.fillRect(x, y, width, height);
         }

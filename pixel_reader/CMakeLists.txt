@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
-project(untitled)
+project(latency_tester)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled main.cpp)
+add_executable(latency_tester main.cpp)

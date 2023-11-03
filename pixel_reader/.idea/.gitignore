@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../:\Studium\Masterarbeit\untitled\.idea/dataSources/
+/../../../../../../:\Studium\Masterarbeit\mine\latency_tester\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/

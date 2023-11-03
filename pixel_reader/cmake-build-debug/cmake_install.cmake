@@ -1,8 +1,8 @@
-# Install script for directory: D:/Studium/Masterarbeit/pixel_reader
+# Install script for directory: D:/Studium/Masterarbeit/mine/FrameworkLatencyTester/pixel_reader
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/untitled")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/latency_tester")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/Studium/Masterarbeit/pixel_reader/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Studium/Masterarbeit/mine/FrameworkLatencyTester/pixel_reader/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

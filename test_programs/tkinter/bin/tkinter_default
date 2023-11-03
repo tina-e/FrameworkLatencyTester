@@ -2,7 +2,7 @@
 import tkinter as tk
 
 root = tk.Tk()
-root.attributes("-zoomed", True)
+# root.attributes("-zoomed", True)
 root.attributes("-fullscreen", True)
 
 def mousePressed(event):
@@ -14,7 +14,7 @@ def mouseReleased(event):
 root.bind("<ButtonPress-1>", mousePressed)
 root.bind("<ButtonRelease-1>", mouseReleased)
 root.configure(background="black")
-#root.pack()
+# root.pack()
 
 root.mainloop()
 

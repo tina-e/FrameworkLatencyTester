@@ -9,6 +9,7 @@ public class Java2D extends JFrame {
         setSize(1920, 1080);
         setTitle("Swing Test Application");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setVisible(true);
         color = new Color(0, 0, 0);
     }
@@ -24,7 +25,7 @@ public class Java2D extends JFrame {
 
         Graphics2D g2d = (Graphics2D) getGraphics();
         g2d.setColor(color);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
+               g2d.fillRect(0, 0, getWidth(), getHeight());
 	Toolkit.getDefaultToolkit().sync();
     }
 
@@ -33,7 +34,7 @@ public class Java2D extends JFrame {
 
         Graphics2D g2d = (Graphics2D) getGraphics();
         g2d.setColor(color);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
+               g2d.fillRect(0, 0, getWidth(), getHeight());
 	Toolkit.getDefaultToolkit().sync();
     }
 

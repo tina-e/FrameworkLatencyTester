@@ -63,16 +63,16 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\Studium\Masterarbeit\pixel_reader
+CMAKE_SOURCE_DIR = D:\Studium\Masterarbeit\mine\FrameworkLatencyTester\pixel_reader
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\Studium\Masterarbeit\pixel_reader\cmake-build-debug
+CMAKE_BINARY_DIR = D:\Studium\Masterarbeit\mine\FrameworkLatencyTester\pixel_reader\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/untitled.dir/all
+all: CMakeFiles/latency_tester.dir/all
 
 .PHONY : all
 
@@ -82,36 +82,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/untitled.dir/clean
+clean: CMakeFiles/latency_tester.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/untitled.dir
+# Target rules for target CMakeFiles/latency_tester.dir
 
 # All Build rule for target.
-CMakeFiles/untitled.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Studium\Masterarbeit\pixel_reader\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target untitled"
-.PHONY : CMakeFiles/untitled.dir/all
+CMakeFiles/latency_tester.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\latency_tester.dir\build.make CMakeFiles/latency_tester.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\latency_tester.dir\build.make CMakeFiles/latency_tester.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\Studium\Masterarbeit\mine\FrameworkLatencyTester\pixel_reader\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target latency_tester"
+.PHONY : CMakeFiles/latency_tester.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/untitled.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Studium\Masterarbeit\pixel_reader\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/untitled.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Studium\Masterarbeit\pixel_reader\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/untitled.dir/rule
+CMakeFiles/latency_tester.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Studium\Masterarbeit\mine\FrameworkLatencyTester\pixel_reader\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/latency_tester.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Studium\Masterarbeit\mine\FrameworkLatencyTester\pixel_reader\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/latency_tester.dir/rule
 
 # Convenience name for target.
-untitled: CMakeFiles/untitled.dir/rule
+latency_tester: CMakeFiles/latency_tester.dir/rule
 
-.PHONY : untitled
+.PHONY : latency_tester
 
 # clean rule for target.
-CMakeFiles/untitled.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/clean
-.PHONY : CMakeFiles/untitled.dir/clean
+CMakeFiles/latency_tester.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\latency_tester.dir\build.make CMakeFiles/latency_tester.dir/clean
+.PHONY : CMakeFiles/latency_tester.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
