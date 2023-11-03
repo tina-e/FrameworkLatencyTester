@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Studium/Masterarbeit/mine/FrameworkLatencyTester/test_programs_mine/bitblt/main.cpp
+iostream
+-
+windef.h
+-
+wingdi.h
+-
+winuser.h
+-
+conio.h
+-
+chrono
+-
+zconf.h
+-
+vector
+-
+
